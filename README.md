@@ -12,11 +12,18 @@ As the usual approach for Arcanist Test Engines, copy the contents of the `golan
 
 The script contains an editable section for things listed below:
 
-* The command that is used to execute testing, by default: `go test -v -cover -coverprofile=coverage.out ./...`.
 * Coverage percentage, by default: `100.0`.
+* The command that is used to execute testing, by default: `go test -v -cover -coverprofile=coverage.out ./...`.
 * Test name, which by default is `Golang Repository Testing`.
 
-If there is a need to customize them, change them in the script itself. These values are setup in constants at the top.
+If there is a need to customize them, change them in the script itself. These values are setup in constants at the top:
+
+```php
+final class GolangTestEngine extends ArcanistUnitTestEngine {
+  const MINIMUM_COVERAGE = 100.0;
+  const TEST_COMMAND     = 'go test -v -cover -coverprofile=coverage.out ./...';
+  const TEST_TITLE       = 'Golang Repository Testing';
+```
 
 ## Contributing
 
