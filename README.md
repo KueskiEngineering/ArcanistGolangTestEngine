@@ -2,10 +2,14 @@
 Arcanist Test Engine for Golang Repositories
 
 ## How it works
-The approach this engine takes is simple. Iterates line by line of STDOUT test execution.
-If a FAIL is found, the whole tests is marked as failed. Related to coverage, it looks up for the coverage output lines.
-If a package doesn't have any test, the coverage is set to 0, and at the end it calculates the average of all packages.
-The test is marked then as FAIL in case the coverage is below the expected.
+The approach this engine takes is simple:
+
+* Iterates line by line of STDOUT test execution.
+* If a FAIL is found, the whole tests is marked as failed: `--- FAIL: TestSomething (0.00s)`.
+* Related to coverage, it looks up for the coverage output lines: `coverage: 100.0% of statements`.
+* If a package doesn't have any test, the coverage is set to 0: `?   	host.com/repo/package	[no test files]`.
+* At the end, the average of all packages is calculated.
+* Test suite is marked as FAIL if average coverage is below the expected.
 
 ## Usage Guide
 As the usual approach for Arcanist Test Engines, copy the contents of the `golang_test_engine` folder to `.arcanist-extensions` folder.
